@@ -1,0 +1,148 @@
+{
+  "project": {
+    "name": "AwesomeLib",
+    "description": "A comprehensive library for awesome functionality",
+    "currency": "USD",
+    "min_amount": 1.0,
+    "max_amount": 1000.0
+  },
+  "beneficiaries": [
+    {
+      "name": "Alice Johnson",
+      "email": "alice@example.com",
+      "github_username": "alicej",
+      "website": "https:\n            description ",
+      "description": "Lead maintainer and project founder"
+    },
+    {
+      "name": "Bob Smith",
+      "email": null,
+      "github_username": "bobsmith",
+      "website": null,
+      "description": "Core contributor and documentation maintainer"
+    }
+  ],
+  "funding_sources": [
+    {
+      "platform": "github",
+      "username": "alicej",
+      "funding_type": "both",
+      "is_active": true,
+      "custom_url": null,
+      "config": {}
+    },
+    {
+      "platform": "patreon",
+      "username": "alicej-dev",
+      "funding_type": "both",
+      "is_active": null,
+      "custom_url": null,
+      "config": {
+        "campaign_id": "12345",
+        "tier_mapping": "auto"
+      }
+    },
+    {
+      "platform": "ko_fi",
+      "username": "alicej",
+      "funding_type": "both",
+      "is_active": null,
+      "custom_url": null,
+      "config": {}
+    },
+    {
+      "platform": "custom",
+      "username": "Custom Donations",
+      "funding_type": "both",
+      "is_active": null,
+      "custom_url": null,
+      "config": {}
+    }
+  ],
+  "tiers": [
+    {
+      "name": "Buy me a coffee",
+      "amount": {
+        "value": 5.0,
+        "currency": "USD"
+      },
+      "description": "Support with a small donation",
+      "benefits": [
+        "Thank you mention in README",
+        "Priority issue responses"
+      ],
+      "max_sponsors": null,
+      "is_active": true
+    },
+    {
+      "name": "Monthly Supporter",
+      "amount": {
+        "value": 25.0,
+        "currency": "USD"
+      },
+      "description": "Regular monthly support",
+      "benefits": [
+        "All Coffee tier benefits",
+        "Early access to new features",
+        "Monthly progress updates",
+        "Direct communication channel"
+      ],
+      "max_sponsors": 100,
+      "is_active": true
+    },
+    {
+      "name": "Project Sponsor",
+      "amount": {
+        "value": 100.0,
+        "currency": "USD"
+      },
+      "description": "Major project sponsorship",
+      "benefits": [
+        "All Supporter tier benefits",
+        "Logo placement in README",
+        "Quarterly video calls",
+        "Feature request priority",
+        "Custom integration support"
+      ],
+      "max_sponsors": 5,
+      "is_active": true
+    }
+  ],
+  "goals": [
+    {
+      "name": "Server Hosting",
+      "target_amount": {
+        "value": 200.0,
+        "currency": "USD"
+      },
+      "current_amount": {
+        "value": 150.0,
+        "currency": "USD"
+      },
+      "description": "Cover monthly server and infrastructure costs",
+      "deadline": null,
+      "progress_percentage": 75.0,
+      "is_reached": false
+    },
+    {
+      "name": "Documentation Overhaul",
+      "target_amount": {
+        "value": 1000.0,
+        "currency": "USD"
+      },
+      "current_amount": {
+        "value": 250.0,
+        "currency": "USD"
+      },
+      "description": "Complete rewrite of project documentation with examples",
+      "deadline": "2024-06-01T00:00:00",
+      "progress_percentage": 25.0,
+      "is_reached": false
+    }
+  ],
+  "metadata": {
+    "generated_at": "2025-06-07T23:58:14.104722",
+    "generator": "funding-dsl-exporter",
+    "version": "1.0"
+  }
+}

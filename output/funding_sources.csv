@@ -1,0 +1,5 @@
+Platform,Username,Funding Type,Active,Custom URL,Config
+github,alicej,both,True,,
+patreon,alicej-dev,both,,,campaign_id=12345; tier_mapping=auto
+ko_fi,alicej,both,,,
+custom,Custom Donations,both,,,
