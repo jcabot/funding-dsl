@@ -1,0 +1,192 @@
+/*
+TextX Grammar for Funding DSL
+Converts funding configuration text into structured model objects.
+*/
+
+FundingConfiguration:
+    'funding' name=STRING '{' 
+        (description=DescriptionElement)?
+        (currency=CurrencyElement)?
+        (min_amount=MinAmountElement)?
+        (max_amount=MaxAmountElement)?
+        (beneficiaries=BeneficiariesBlock)?
+        (sources=SourcesBlock)?
+        (tiers=TiersBlock)?
+        (goals=GoalsBlock)?
+    '}'
+;
+
+// Basic configuration elements
+DescriptionElement:
+    'description' value=STRING
+;
+
+CurrencyElement:
+    'currency' value=CurrencyType
+;
+
+MinAmountElement:
+    'min_amount' value=FLOAT
+;
+
+MaxAmountElement:
+    'max_amount' value=FLOAT
+;
+
+// Beneficiaries block
+BeneficiariesBlock:
+    'beneficiaries' '{' 
+        beneficiaries*=BeneficiaryElement
+    '}'
+;
+
+BeneficiaryElement:
+    'beneficiary' name=STRING '{'
+        (email=EmailProperty)?
+        (github=GithubProperty)?
+        (website=WebsiteProperty)?
+        (description=DescriptionProperty)?
+    '}'
+;
+
+EmailProperty:
+    'email' value=STRING
+;
+
+GithubProperty:
+    'github' value=STRING
+;
+
+WebsiteProperty:
+    'website' value=STRING
+;
+
+DescriptionProperty:
+    'description' value=STRING
+;
+
+// Sources block
+SourcesBlock:
+    'sources' '{'
+        sources*=SourceElement
+    '}'
+;
+
+SourceElement:
+    PlatformSource | CustomSource
+;
+
+PlatformSource:
+    platform=PlatformType username=STRING '{'
+        (type=TypeProperty)?
+        (active=ActiveProperty)?
+        (config=ConfigProperty)?
+    '}'
+;
+
+CustomSource:
+    'custom' name=STRING '{'
+        url=UrlProperty
+        (type=TypeProperty)?
+        (active=ActiveProperty)?
+        (config=ConfigProperty)?
+    '}'
+;
+
+TypeProperty:
+    'type' value=FundingType
+;
+
+ActiveProperty:
+    'active' value=BOOL
+;
+
+UrlProperty:
+    'url' value=STRING
+;
+
+ConfigProperty:
+    'config' '{'
+        configs*=ConfigKeyValue
+    '}'
+;
+
+ConfigKeyValue:
+    key=STRING value=STRING
+;
+
+// Tiers block
+TiersBlock:
+    'tiers' '{'
+        tiers*=TierElement
+    '}'
+;
+
+TierElement:
+    'tier' name=STRING '{'
+        amount=AmountProperty
+        (description=DescriptionProperty)?
+        (max_sponsors=MaxSponsorsProperty)?
+        (benefits=BenefitsProperty)?
+    '}'
+;
+
+AmountProperty:
+    'amount' amount=Amount
+;
+
+MaxSponsorsProperty:
+    'max_sponsors' value=INT
+;
+
+BenefitsProperty:
+    'benefits' '[' benefits*=STRING[','] ']'
+;
+
+// Goals block
+GoalsBlock:
+    'goals' '{'
+        goals*=GoalElement
+    '}'
+;
+
+GoalElement:
+    'goal' name=STRING '{'
+        target=TargetProperty
+        (current=CurrentProperty)?
+        (deadline=DeadlineProperty)?
+        (description=DescriptionProperty)?
+    '}'
+;
+
+TargetProperty:
+    'target' amount=Amount
+;
+
+CurrentProperty:
+    'current' amount=Amount
+;
+
+DeadlineProperty:
+    'deadline' value=STRING
+;
+
+// Data types
+Amount:
+    value=FLOAT currency=CurrencyType
+;
+
+// Enums
+CurrencyType:
+    'USD' | 'EUR' | 'GBP' | 'CAD' | 'AUD'
+;
+
+PlatformType:
+    'github_sponsors' | 'patreon' | 'ko_fi' | 'open_collective' | 
+    'buy_me_a_coffee' | 'liberapay' | 'paypal' | 'tidelift' | 
+    'issuehunt' | 'community_bridge' | 'polar' | 'thanks_dev'
+;
+
+FundingType:
+    'one_time' | 'recurring' | 'both'
+; 
