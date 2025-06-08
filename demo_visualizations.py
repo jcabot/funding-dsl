@@ -12,7 +12,7 @@ def demonstrate_visualizations():
     # Import required modules
     from textual import FundingDSLParser
     from graphical.funding_visualizer import FundingVisualizer, visualize_funding_config
-        from graphical.interactive_diagrams import (
+    from graphical.interactive_diagrams import (
         InteractiveDiagramGenerator, 
         display_configuration_summary,
         create_funding_diagrams

@@ -317,7 +317,6 @@ class FundingVisualizer:
         lines = []
         lines.append("Funding Sources Matrix")
         lines.append("=" * 50)
-        lines.append()
         
         # Header with beneficiary names
         header = "Platform".ljust(15)
